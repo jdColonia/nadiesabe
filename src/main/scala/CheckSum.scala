@@ -1,6 +1,6 @@
 abstract class CheckSum:
 
-  def checkSum(block: List[String]): String
+  def checkSum(blocks: List[String]): String
 
   // Definimos la función binarySum que toma dos cadenas de caracteres
   def binarySum(a: String, b: String): String = {

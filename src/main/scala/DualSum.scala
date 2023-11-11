@@ -1,11 +1,11 @@
 class DualSum extends CheckSum:
-  override def checkSum(data: List[String]): String =
+  override def checkSum(blocks: List[String]): String =
     // Inicializar las sumas
     val initSumA = "0" * 8
     val initSumB = "0" * 8
 
     // Iterar a través de cada bloque en la palabra de datos
-    val (finalSumA, finalSumB) = data.foldLeft((initSumA, initSumB)) { case ((sumA, sumB), block) =>
+    val (finalSumA, finalSumB) = blocks.foldLeft((initSumA, initSumB)) { case ((sumA, sumB), block) =>
       // Calcular la nueva suma de A
       val newSumA = binarySum(sumA, block)
       val sumAInt = Integer.parseInt(newSumA, 2)

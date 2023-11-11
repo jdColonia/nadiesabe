@@ -1,10 +1,10 @@
 class SingleSum extends CheckSum:
-  override def checkSum(data: List[String]): String =
+  override def checkSum(blocks: List[String]): String =
     // Inicializar la suma
-    val initSum = "0" * data.head.length
+    val initSum = "0" * blocks.head.length
 
     // Iterar a través de cada bloque en la palabra de datos
-    val finalSum = data.foldLeft(initSum) { (sum, block) =>
+    val finalSum = blocks.foldLeft(initSum) { (sum, block) =>
       // Calcular la nueva suma
       val newSum = binarySum(sum, block)
 
