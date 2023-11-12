@@ -1,3 +1,5 @@
+package checkSumExperiment
+
 class SingleSum extends CheckSum:
   override def checkSum(blocks: List[String]): String =
     // Añadir un bloques de 8 bits si la cantidad de bloques es impar

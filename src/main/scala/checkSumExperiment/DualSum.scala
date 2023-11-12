@@ -1,3 +1,5 @@
+package checkSumExperiment
+
 class DualSum extends CheckSum:
   override def checkSum(blocks: List[String]): String =
     // Inicializar las sumas

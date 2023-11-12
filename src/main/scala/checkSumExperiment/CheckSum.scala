@@ -1,3 +1,5 @@
+package checkSumExperiment
+
 abstract class CheckSum:
 
   def checkSum(blocks: List[String]): String
@@ -8,7 +10,6 @@ abstract class CheckSum:
     val maxLength = math.max(a.length, b.length)
     val aPadded = a.reverse.padTo(maxLength, '0').reverse
     val bPadded = b.reverse.padTo(maxLength, '0').reverse
-
     // Definimos una función interna addBinaryStrings que realiza la suma binaria
     // Esta función toma dos listas de caracteres (los números binarios) y un entero (el acarreo)
     def addBinaryStrings(a: List[Char], b: List[Char], carry: Int): String = (a, b) match
@@ -24,4 +25,4 @@ abstract class CheckSum:
 
     // Llamamos a addBinaryStrings con las cadenas de entrada convertidas a listas y revertidas, y un acarreo inicial de 0
     // Finalmente, revertimos la cadena resultante porque la suma se realiza de derecha a izquierda
-    addBinaryStrings(a.reverse.toList, b.reverse.toList, 0).reverse
+    addBinaryStrings(aPadded.reverse.toList, bPadded.reverse.toList, 0).reverse

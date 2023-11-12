@@ -2,7 +2,7 @@
 
   def checkSum(blocks: List[String]): String
 
-  // Definimos la función binarySum que toma dos cadenas de caracteres
+    // Definimos la función binarySum que toma dos cadenas de caracteres
   def binarySum(a: String, b: String): String =
     // Asegurarse de que ambas cadenas tengan la misma longitud
     val maxLength = math.max(a.length, b.length)
@@ -28,13 +28,21 @@
 
 class SingleSum extends CheckSum:
   override def checkSum(blocks: List[String]): String =
+    // Añadir un bloques de 8 bits si la cantidad de bloques es impar
+    val blocksPadded =
+      if (blocks.length % 2 != 0) "0" * 8 :: blocks
+      else blocks
+
+    // Agrupar los bloques de 8 bits en 16 bits
+    val blocksGrouped = blocksPadded.grouped(2).map(_.mkString).toList
+
     // Inicializar la suma
-    val initSum = "0" * blocks.head.length
+    val initSum = "0" * blocksGrouped.head.length
 
     // Iterar a través de cada bloque en la palabra de datos
-    val finalSum = blocks.foldLeft(initSum) { (sum, block) =>
+    val finalSum = blocksGrouped.foldLeft(initSum) { (sum, blocksGrouped) =>
       // Calcular la nueva suma
-      val newSum = binarySum(sum, block)
+      val newSum = binarySum(sum, blocksGrouped)
 
       // Convertir la suma a un número entero
       val sumInt = Integer.parseInt(newSum, 2)
@@ -50,25 +58,27 @@ class SingleSum extends CheckSum:
     finalSum
 
 class DualSum extends CheckSum:
-  override def checkSum(blocks: List[String]): String =
+  override def checkSum(data: List[String]): String =
     // Inicializar las sumas
     val initSumA = "0" * 8
     val initSumB = "0" * 8
 
     // Iterar a través de cada bloque en la palabra de datos
-    val (finalSumA, finalSumB) = blocks.foldLeft((initSumA, initSumB)) { case ((sumA, sumB), block) =>
+    val (finalSumA, finalSumB) = data.foldLeft((initSumA, initSumB)) { case ((sumA, sumB), block) =>
       // Calcular la nueva suma de A
       val newSumA = binarySum(sumA, block)
       val sumAInt = Integer.parseInt(newSumA, 2)
       val modSumA = sumAInt % 255
+      println(modSumA)
       val finalSumA = modSumA.toBinaryString.reverse.padTo(8, '0').reverse
-
+      println(finalSumA)
       // Calcular la nueva suma de B
       val newSumB = binarySum(sumB, finalSumA)
       val sumBInt = Integer.parseInt(newSumB, 2)
       val modSumB = sumBInt % 255
+      println(modSumB)
       val finalSumB = modSumB.toBinaryString.reverse.padTo(8, '0').reverse
-
+      println(finalSumB)
       (finalSumA, finalSumB)
     }
 
@@ -76,7 +86,7 @@ class DualSum extends CheckSum:
     finalSumB + finalSumA
 
 val singleSum = new SingleSum
-//singleSum.checkSum(List("0100100001100101", "0110110001101100", "0110111100000000"))
+singleSum.checkSum(List("01010111", "01101111", "01110010", "01101100", "01100100"))
 
 val dualSum = new DualSum
 dualSum.checkSum(List("01010111", "01101111", "01110010", "01101100", "01100100"))*/
