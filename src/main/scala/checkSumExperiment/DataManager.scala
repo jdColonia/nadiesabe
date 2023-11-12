@@ -1,4 +1,4 @@
-/*package checkSumExperiment
+package checkSumExperiment
 
 class DataManager private(instance: DataManager = null):
   def TEST_FILE_PREFIX: String = ???
@@ -9,4 +9,4 @@ class DataManager private(instance: DataManager = null):
 
   def loadData(filePath: String): String = ???
 
-  def readData(fileBits: String): List[String] = ???*/
+  def readData(fileBits: String): List[String] = ???
