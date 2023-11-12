@@ -1,12 +1,20 @@
 class SingleSum extends CheckSum:
   override def checkSum(blocks: List[String]): String =
+    // Añadir un bloques de 8 bits si la cantidad de bloques es impar
+    val blocksPadded =
+      if (blocks.length % 2 != 0) "0" * 8 :: blocks
+      else blocks
+
+    // Agrupar los bloques de 8 bits en 16 bits
+    val blocksGrouped = blocksPadded.grouped(2).map(_.mkString).toList
+
     // Inicializar la suma
-    val initSum = "0" * blocks.head.length
+    val initSum = "0" * blocksGrouped.head.length
 
     // Iterar a través de cada bloque en la palabra de datos
-    val finalSum = blocks.foldLeft(initSum) { (sum, block) =>
+    val finalSum = blocksGrouped.foldLeft(initSum) { (sum, blocksGrouped) =>
       // Calcular la nueva suma
-      val newSum = binarySum(sum, block)
+      val newSum = binarySum(sum, blocksGrouped)
 
       // Convertir la suma a un número entero
       val sumInt = Integer.parseInt(newSum, 2)
