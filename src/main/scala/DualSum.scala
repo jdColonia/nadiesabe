@@ -10,16 +10,16 @@ class DualSum extends CheckSum:
       val newSumA = binarySum(sumA, block)
       val sumAInt = Integer.parseInt(newSumA, 2)
       val modSumA = sumAInt % 255
-      val finalSumA = modSumA.toBinaryString.reverse.padTo(newSumA.length, '0').reverse
+      val finalSumA = modSumA.toBinaryString.reverse.padTo(8, '0').reverse
 
       // Calcular la nueva suma de B
       val newSumB = binarySum(sumB, finalSumA)
       val sumBInt = Integer.parseInt(newSumB, 2)
       val modSumB = sumBInt % 255
-      val finalSumB = modSumB.toBinaryString.reverse.padTo(newSumB.length, '0').reverse
+      val finalSumB = modSumB.toBinaryString.reverse.padTo(8, '0').reverse
 
       (finalSumA, finalSumB)
     }
 
     // El valor de verificación es la suma final
-    finalSumA + finalSumB
+    finalSumB + finalSumA

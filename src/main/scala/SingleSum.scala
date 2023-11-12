@@ -15,7 +15,7 @@ class SingleSum extends CheckSum:
       val modSum = sumInt % ((1 << 16) - 1)
 
       // Convertir el resultado de nuevo a una cadena binaria
-      modSum.toBinaryString.reverse.padTo(newSum.length, '0').reverse
+      modSum.toBinaryString.reverse.padTo(16, '0').reverse
     }
 
     // El valor de verificación es la suma final
