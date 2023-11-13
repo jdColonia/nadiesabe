@@ -8,15 +8,17 @@ class DataManager private() {
   def TEST_FILE_PREFIX: String = "testFile"
 
   def generateData(path: String, testSize: Int): String = {
-    val random = new Random()
-    val spanishChars = ('a' to 'z') ++ ('A' to 'Z')
-    val data = Array.fill(testSize)(spanishChars(random.nextInt(spanishChars.length)))
+    if (testSize <= 0) {
+      throw new IllegalArgumentException("testSize must be greater than 0")
+    }
     val dirPath = Paths.get(path)
     if (!Files.exists(dirPath)) {
       Files.createDirectories(dirPath)
     }
     val filePath = dirPath.resolve(TEST_FILE_PREFIX + testSize + ".txt")
-    Files.write(filePath, data.mkString.getBytes("UTF-8"))
+    val random = new Random()
+    val data = Array.fill(testSize)(random.nextInt(32,127).toByte)
+    Files.write(filePath, data.map(_.toChar).mkString.getBytes)
     filePath.toString
   }
 
