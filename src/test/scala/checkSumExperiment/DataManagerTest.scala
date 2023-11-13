@@ -15,19 +15,27 @@ class DataManagerTest extends munit.FunSuite {
   val dataManager: DataManager = DataManager.getInstance()
 
   test("Test case 25") {
-    assert(dataManager.generateData(path, toySize).length * 8 == toySize)
+    val newPath = dataManager.generateData(path, toySize)
+    val file = new File(newPath)
+    assert(file.length() == toySize)
   }
 
   test("Test case 26") {
-    assert(dataManager.generateData(path, smallSize).length * 8 == smallSize)
+    val newPath = dataManager.generateData(path, smallSize)
+    val file = new File(newPath)
+    assert(file.length() == smallSize)
   }
 
   test("Test case 27") {
-    assert(dataManager.generateData(path, mediumSize).length * 8 == mediumSize)
+    val newPath = dataManager.generateData(path, mediumSize)
+    val file = new File(newPath)
+    assert(file.length() == mediumSize)
   }
 
   test("Test case 28") {
-    assert(dataManager.generateData(path, largeSize).length * 8 == largeSize)
+    val newPath = dataManager.generateData(path, largeSize)
+    val file = new File(newPath)
+    assert(file.length() == largeSize)
   }
 
   test("Test case 29") {
@@ -47,11 +55,11 @@ class DataManagerTest extends munit.FunSuite {
   val nonExistenFile = "src/files/non-existent_file.txt"
 
   test("Test case 31") {
-    assert(dataManager.loadData(simpleTextFile).length * 8 == 50)
+    assert(dataManager.loadData(simpleTextFile).length == 400)
   }
 
   test("Test case 32") {
-    assert(dataManager.loadData(largeFile).length * 8 == 100000)
+    assert(dataManager.loadData(largeFile).length == 800000)
   }
 
   test("Test case 33") {
@@ -62,7 +70,7 @@ class DataManagerTest extends munit.FunSuite {
 
   val emptyBitsFile: String = ""
   val smallBitsFile: String = "0100100001100101011011000110110001101111"
-  val largeBitsFile: String = "010010000110010101101100011011000110111101010111011011110110010001100100010100110110000101100011011011110110110011001010110110001100000010100110110000101100101011100110110000101100010011010000110011101100101011011010110000101100100010100100110010101110100011010000110010100100100011011110110110101101100011010010110110001100001"
+  val largeBitsFile: String = "01001000011001010110110001101100011011110101011101101111011100100110110001100100010100110110001101100001011011000110000101010000011110010111010001101000011011110110111001001010011000010111011001100001"
   val smallBitsFileList: List[String] = List("01001000", "01100101", "01101100", "01101100", "01101111")
   val largeBitsFileList: List[String] = List(
     "01001000", "01100101", "01101100", "01101100", "01101111", "01010111", "01101111", "01110010", "01101100", "01100100",
