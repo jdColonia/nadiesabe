@@ -10,16 +10,31 @@ class DualSumTest extends munit.FunSuite {
 
   val dualSum = new DualSum
 
-  test("dualSum checksum should calculate the correct checksum for valid inputs") {
+  test("Test case 6") {
     assert(dualSum.checkSum(helloBitsList) == "1000110011110101")
+  }
+
+  test("Test case 7") {
     assert(dualSum.checkSum(worldBitsList) == "0000011100001010")
+  }
+
+  test("Test case 8") {
     assert(dualSum.checkSum(scalaBitsList) == "1000110011100101")
+  }
+
+  test("Test case 9") {
     assert(dualSum.checkSum(pythonBitsList) == "1001100110000100")
+  }
+
+  test("Test case 10") {
     assert(dualSum.checkSum(javaBitsList) == "1001101110000011")
   }
 
-  test("dualSum checksum should detect changes in the input data") {
+  test("Test case 13") {
     assert(dualSum.checkSum(List("01001000", "01100101", "01101100", "01101100", "01100101")) != "1000110011110101")
+  }
+
+  test("Test case 14") {
     assert(dualSum.checkSum(List("01010111", "01100101", "01110010", "01101100", "01100100")) != "0000011100001010")
   }
 

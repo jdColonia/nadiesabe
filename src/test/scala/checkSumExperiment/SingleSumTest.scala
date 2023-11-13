@@ -10,16 +10,31 @@ class SingleSumTest extends munit.FunSuite {
 
   val singleSum = new SingleSum
 
-  test("singleSum checksum should calculate the correct checksum for valid inputs") {
+  test("Test case 1") {
     assert(singleSum.checkSum(helloBitsList) == "1101001000100011")
+  }
+
+  test("Test case 2") {
     assert(singleSum.checkSum(worldBitsList) == "1101110000101101")
+  }
+
+  test("Test case 3") {
     assert(singleSum.checkSum(scalaBitsList) == "1101000000010101")
+  }
+
+  test("Test case 4") {
     assert(singleSum.checkSum(pythonBitsList) == "0011010001010000")
+  }
+
+  test("Test case 5") {
     assert(singleSum.checkSum(javaBitsList) == "1100000011000010")
   }
 
-  test("singleSum checksum should detect changes in the input data") {
+  test("Test case 11") {
     assert(singleSum.checkSum(List("01001000", "01100101", "01101100", "01101100", "01100101")) != "1101001000100011")
+  }
+
+  test("Test case 12") {
     assert(singleSum.checkSum(List("01010111", "01100101", "01110010", "01101100", "01100100")) != "1101110000101101")
   }
 
