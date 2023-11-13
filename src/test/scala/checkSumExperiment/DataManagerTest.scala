@@ -1,6 +1,7 @@
 package checkSumExperiment
 
 import java.io.File
+import java.nio.file.NoSuchFileException
 
 class DataManagerTest extends munit.FunSuite {
 
@@ -63,7 +64,7 @@ class DataManagerTest extends munit.FunSuite {
   }
 
   test("Test case 33") {
-    intercept[IllegalArgumentException] {
+    intercept[NoSuchFileException] {
       dataManager.loadData(nonExistenFile)
     }
   }

@@ -1,6 +1,6 @@
 package checkSumExperiment
 
-import java.nio.file.{Files, Paths}
+import java.nio.file.{Files, NoSuchFileException, Paths}
 import java.util.Random
 import scala.io.Source
 
@@ -23,7 +23,11 @@ class DataManager private() {
   }
 
   def loadData(filePath: String): String = {
-    val bytes = Files.readAllBytes(Paths.get(filePath))
+    val path = Paths.get(filePath)
+    if (!Files.exists(path)) {
+      throw new NoSuchFileException(s"File $filePath does not exist")
+    }
+    val bytes = Files.readAllBytes(path)
     bytes.map(b => String.format("%8s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0')).mkString
   }
 
