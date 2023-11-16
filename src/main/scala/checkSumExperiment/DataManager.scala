@@ -2,10 +2,9 @@ package checkSumExperiment
 
 import java.nio.file.{Files, NoSuchFileException, Paths}
 import java.util.Random
-import scala.io.Source
 
-class DataManager private() {
-  def TEST_FILE_PREFIX: String = "testFile"
+object DataManager:
+  val TEST_FILE_PREFIX: String = "testFile"
 
   def generateData(path: String, testSize: Int): String = {
     if (testSize <= 0) {
@@ -17,7 +16,7 @@ class DataManager private() {
     }
     val filePath = dirPath.resolve(TEST_FILE_PREFIX + testSize + ".txt")
     val random = new Random()
-    val data = Array.fill(testSize)(random.nextInt(32,127).toByte)
+    val data = Array.fill(testSize)(random.nextInt(32, 127).toByte)
     Files.write(filePath, data.map(_.toChar).mkString.getBytes)
     filePath.toString
   }
@@ -34,15 +33,14 @@ class DataManager private() {
   def readData(fileBits: String): List[String] = {
     fileBits.grouped(8).toList
   }
-}
 
-object DataManager {
-  private var instance: DataManager = null
-
-  def getInstance(): DataManager = {
-    if (instance == null) {
-      instance = new DataManager()
-    }
-    instance
-  }
-}
+//object DataManager {
+//  private var instance: DataManager = null
+//
+//  def getInstance(): DataManager = {
+//    if (instance == null) {
+//      instance = new DataManager()
+//    }
+//    instance
+//  }
+//}
