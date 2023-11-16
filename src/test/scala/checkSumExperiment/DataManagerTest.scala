@@ -5,7 +5,7 @@ import java.nio.file.NoSuchFileException
 
 class DataManagerTest extends munit.FunSuite {
 
-  val path = "src/files/"
+  val path = "src/experimentation/unitTests/"
   val toySize = 50
   val smallSize = 500
   val mediumSize = 15000

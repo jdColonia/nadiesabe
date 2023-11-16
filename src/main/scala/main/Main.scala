@@ -14,9 +14,7 @@ object Main:
   //    println(res == "1011010011010111")
 
   def executeExperiment(): Unit =
-    try {
+    try
       ExperimentController.executeExperiment()
-    } catch {
-      case e: Exception =>
-        println(e.getMessage)
-    }
+    catch case e: Exception =>
+      println(e.getMessage)
