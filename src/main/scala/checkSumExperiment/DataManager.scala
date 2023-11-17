@@ -14,7 +14,7 @@ object DataManager:
       Files.createDirectories(dirPath)
     val filePath = dirPath.resolve(TEST_FILE_PREFIX + testSize + ".txt")
     val random = new Random()
-    val data = Array.fill(testSize)(random.nextInt(32, 127).toByte)
+    val data = Array.fill(testSize)(random.nextInt(65, 123).toByte)
     Files.write(filePath, data.map(_.toChar).mkString.getBytes)
     filePath.toString
 
